@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-import { CompanyService } from '../company.service';
+
 import { Company } from '../company';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CompanyService } from '../company.service';
 
 @Component({
   selector: 'app-company-page',
@@ -9,13 +10,13 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./company-details-page.component.scss']
 })
 export class CompanyDetailsPageComponent implements OnInit {
-  selectedCompany: Company;
+  selectedCompany: Company | undefined;
 
   constructor(private companyService: CompanyService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const companyID = this.route.snapshot.paramMap.get('id');
-    this.companyService.getCompanyByID(companyID).subscribe(res => {
+    const companyID : any = this.route.snapshot.paramMap.get('id');
+    this.companyService.getCompanyByID(companyID).subscribe((res: any) => {
       console.log(res);
       this.selectedCompany = res;
     });
@@ -30,7 +31,7 @@ export class CompanyDetailsPageComponent implements OnInit {
   }
 
   deleteCompanyHandler(company: Company): void {
-    this.companyService.deleteCompany(company.id).subscribe(() => {
+    this.companyService.deleteCompany(company.id? company.id : '' ).subscribe(() => {
       this.backToSearchPage();
     });
   }

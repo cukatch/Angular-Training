@@ -15,7 +15,7 @@ export class CompanySearchPageComponent implements OnInit {
     this.loadCompanyList();
   }
 
-  searchCompanyHandler(term): void {
+  searchCompanyHandler(term: any): void {
     console.log(term);
     if (term) {
       this.searchCompany(term);
@@ -25,13 +25,13 @@ export class CompanySearchPageComponent implements OnInit {
   }
 
   private loadCompanyList(): void {
-    this.companyService.getCompanyList().subscribe(result => {
+    this.companyService.getCompanyList().subscribe((result: any) => {
       this.companyList = result;
     });
   }
 
-  private searchCompany(term): void {
-    this.companyService.search(term).subscribe(results => {
+  private searchCompany(term: any): void {
+    this.companyService.search(term).subscribe((results: any) => {
       this.companyList = results;
     });
   }
