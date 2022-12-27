@@ -1,0 +1,16 @@
+<mat-card class="search">
+  <form class="search-form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        id="searchBox"
+        placeholder="{{ title }}"
+        name="searchField"
+        [(ngModel)]="searchField"
+      />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
+</mat-card>
+
