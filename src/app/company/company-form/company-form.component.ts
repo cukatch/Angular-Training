@@ -17,7 +17,7 @@ export class CompanyFormComponent implements OnInit {
   companyForm: FormGroup;
 
   @Input()
-  company: Company;
+  company: Company | any;
 
   @Input()
   edit = false;

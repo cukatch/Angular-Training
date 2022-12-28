@@ -10,7 +10,7 @@ export class ClientDetailComponent {
   editView = false;
 
   @Input()
-  client: Client | undefined;
+  client: Client | any;
 
   @Output()
   searchEvent: EventEmitter<Client> = new EventEmitter();

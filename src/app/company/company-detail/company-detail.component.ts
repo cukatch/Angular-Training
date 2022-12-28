@@ -10,7 +10,7 @@ export class CompanyDetailComponent {
   editView = false;
 
   @Input()
-  company: Company;
+  company: Company | any;
 
   @Output()
   searchEvent: EventEmitter<Company> = new EventEmitter();

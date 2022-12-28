@@ -10,7 +10,7 @@ import { ClientService } from '../client.service';
 })
 export class ClientEditPageComponent implements OnInit {
 
-  client: Client
+  client: Client | any
   // get the client ID from the query params
 
   // then get the client details
@@ -19,8 +19,8 @@ export class ClientEditPageComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.route.snapshot.paramMap.get('id'));
-    const clientId = this.route.snapshot.paramMap.get('id')
-    this.clientService.getClientByID(clientId).subscribe((result) => {
+    const clientId : any = this.route.snapshot.paramMap.get('id')
+    this.clientService.getClientByID(clientId).subscribe((result: Client) => {
       console.log(result)
       this.client = result;
     });

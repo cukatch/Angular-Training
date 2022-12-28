@@ -18,8 +18,8 @@ export class ClientDetailsPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const clientID = this.route.snapshot.paramMap.get('id');
-    this.clientService.getClientByID(clientID).subscribe((res: Client | undefined) => {
+    const clientID : any = this.route.snapshot.paramMap.get('id');
+    this.clientService.getClientByID(clientID).subscribe((res: Client | any) => {
       this.selectedClient = res;
     });
   }
@@ -32,7 +32,7 @@ export class ClientDetailsPageComponent implements OnInit {
     this.router.navigateByUrl('/clients/edit/' + client.id);
   }
 
-  deleteClientHandler(client: Client): void {
+  deleteClientHandler(client: Client | any): void {
     this.clientService.deleteClient(client.id).subscribe(() => {
       this.backToSearchPage();
     });

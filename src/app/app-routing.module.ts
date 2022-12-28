@@ -9,32 +9,32 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 const routes: Routes = [
   {
     path: 'clients/new',
-    loadChildren: './clients/client.module#ClientModule'
+    loadChildren:  () => import('./clients/client.module').then(x => x.ClientModule)
   },
   {
     path: 'clients/edit/:id',
-    loadChildren: './clients/client.module#ClientModule'
+    loadChildren: () => import('./clients/client.module').then(x => x.ClientModule)
   },
 
   {
     path: 'clients/search',
-    loadChildren: './clients/client.module#ClientModule'
+    loadChildren: () => import('./clients/client.module').then(x => x.ClientModule)
   },
   {
     path: 'clients/details/:id',
-    loadChildren: './clients/client.module#ClientModule'
+    loadChildren: () => import('./clients/client.module').then(x => x.ClientModule)
   },
   {
     path: 'company/new',
-    loadChildren: './company/company.module#CompanyModule'
+    loadChildren: () => import('./company/company.module').then(x => x.CompanyModule)
   },
   {
     path: 'company/search',
-    loadChildren: './company/company.module#CompanyModule'
+    loadChildren: () => import('./company/company.module').then(x => x.CompanyModule)
   },
   {
     path: 'company/details/:id',
-    loadChildren: './company/company.module#CompanyModule'
+    loadChildren: () => import('./company/company.module').then(x => x.CompanyModule)
   },
   {
     path: 'about',

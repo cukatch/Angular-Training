@@ -10,7 +10,7 @@ import { CompanyService } from '../company.service';
   styleUrls: ['./company-details-page.component.scss']
 })
 export class CompanyDetailsPageComponent implements OnInit {
-  selectedCompany: Company | undefined;
+  selectedCompany: Company | any;
 
   constructor(private companyService: CompanyService, private router: Router, private route: ActivatedRoute) {}
 

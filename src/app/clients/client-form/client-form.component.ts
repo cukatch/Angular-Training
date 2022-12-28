@@ -12,7 +12,7 @@ export class ClientFormComponent implements OnInit {
   clientForm: FormGroup;
 
   @Input()
-  client: Client;
+  client: Client | any;
 
   @Input()
   edit = false;
