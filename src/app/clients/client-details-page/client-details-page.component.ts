@@ -9,7 +9,7 @@ import { Client } from '../client';
   styleUrls: ['./client-details-page.component.scss']
 })
 export class ClientDetailsPageComponent implements OnInit {
-  selectedClient: Client | undefined;
+  selectedClient: Client | any;
 
   constructor(
     private clientService: ClientService,
