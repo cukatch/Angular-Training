@@ -10,18 +10,18 @@ import { Router } from '@angular/router';
   providers: [ClientService]
 })
 export class ClientPageComponent implements OnInit {
-  clientList: any[] | any;
+  clientList: Client[] | any;
 
   constructor(private clientService: ClientService, private router: Router) {}
 
   ngOnInit() {
-    this.clientService.getClients().subscribe((res: any[]) => {
+    this.clientService.getClients().subscribe((res: Client[] | any) => {
       this.clientList = res;
     });
   }
 
-  saveClient(clientDetails: Client) {
-    this.clientService.save(clientDetails).subscribe(client => {
+  saveClient(clientDetails: Client ) {
+    this.clientService.save(clientDetails).subscribe((client: Client | any) => {
       this.clientList.push(client);
       this.router.navigateByUrl('/clients/search');
     });

@@ -19,7 +19,7 @@ export class ClientDetailsPageComponent implements OnInit {
 
   ngOnInit(): void {
     const clientID : any = this.route.snapshot.paramMap.get('id');
-    this.clientService.getClientByID(clientID).subscribe((res: Client | any) => {
+    this.clientService.getClientByID(clientID).subscribe((res: Client |any) => {
       this.selectedClient = res;
     });
   }

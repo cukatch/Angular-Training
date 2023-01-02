@@ -9,19 +9,19 @@ import { Company } from "../company";
     styleUrls: ['./company-page.component.scss']
 })
 export class CompanyPageComponent implements OnInit {
-    companyList: any[] | undefined;
+    companyList: Company[] | any;
 
     constructor(private companyService: CompanyService, private router: Router) { }
 
     ngOnInit() {
-        this.companyService.getCompanyList().subscribe((res: any[]) => {
+        this.companyService.getCompanyList().subscribe((res: Company[] | any) => {
             this.companyList = res;
         })
     }
 
     saveCompany(companyDetails: Company) {
-        this.companyService.save(companyDetails).subscribe((company: any) => {
-            this.companyList?.push(company);
+        this.companyService.save(companyDetails).subscribe((company: Company | any) => {
+            this.companyList.push(company);
             this.router.navigateByUrl('/company/search');
 
         })

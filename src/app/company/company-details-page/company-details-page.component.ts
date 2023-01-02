@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
-
+import { CompanyService } from '../company.service';
 import { Company } from '../company';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CompanyService } from '../company.service';
 
 @Component({
   selector: 'app-company-page',
@@ -16,8 +15,7 @@ export class CompanyDetailsPageComponent implements OnInit {
 
   ngOnInit(): void {
     const companyID : any = this.route.snapshot.paramMap.get('id');
-    this.companyService.getCompanyByID(companyID).subscribe((res: any) => {
-      console.log(res);
+    this.companyService.getCompanyByID(companyID).subscribe((res: Company | any) => {
       this.selectedCompany = res;
     });
   }
@@ -30,8 +28,8 @@ export class CompanyDetailsPageComponent implements OnInit {
     this.router.navigateByUrl('/company/edit/' + company.id);
   }
 
-  deleteCompanyHandler(company: Company): void {
-    this.companyService.deleteCompany(company.id? company.id : '' ).subscribe(() => {
+  deleteCompanyHandler(company: Company | any): void {
+    this.companyService.deleteCompany(company.id).subscribe(() => {
       this.backToSearchPage();
     });
   }

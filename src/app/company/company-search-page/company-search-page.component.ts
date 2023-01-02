@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from '../company.service';
+import { Company } from '../company';
 
 @Component({
   selector: 'app-company-search-page',
@@ -7,7 +8,7 @@ import { CompanyService } from '../company.service';
   styleUrls: ['./company-search-page.component.scss']
 })
 export class CompanySearchPageComponent implements OnInit {
-  companyList: any;
+  companyList: Company[] | any;
 
   constructor(private companyService: CompanyService) {}
 
@@ -15,8 +16,7 @@ export class CompanySearchPageComponent implements OnInit {
     this.loadCompanyList();
   }
 
-  searchCompanyHandler(term: any): void {
-    console.log(term);
+  searchCompanyHandler(term : any): void {
     if (term) {
       this.searchCompany(term);
     } else {
@@ -25,15 +25,14 @@ export class CompanySearchPageComponent implements OnInit {
   }
 
   private loadCompanyList(): void {
-    this.companyService.getCompanyList().subscribe((result: any) => {
+    this.companyService.getCompanyList().subscribe((result: Company[] | any) => {
       this.companyList = result;
     });
   }
 
-  private searchCompany(term: any): void {
-    this.companyService.search(term).subscribe((results: any) => {
+  private searchCompany(term : any): void {
+    this.companyService.search(term).subscribe((results: Company[] | any) => {
       this.companyList = results;
     });
   }
 }
-
